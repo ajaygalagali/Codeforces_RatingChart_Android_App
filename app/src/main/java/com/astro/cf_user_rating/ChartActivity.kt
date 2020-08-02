@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.astro.cf_user_rating.API.CF_API
@@ -25,6 +26,8 @@ class ChartActivity : AppCompatActivity() {
     lateinit var dataSetOne: LineDataSet
     lateinit var dataA: LineData
     lateinit var datasets: java.util.ArrayList<LineDataSet>
+
+    lateinit var progressBar: ProgressBar
 //    var fetchFlag = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,18 +35,14 @@ class ChartActivity : AppCompatActivity() {
 
         // Line Chart
 
-    arrayList = ArrayList()
+        arrayList = ArrayList()
 
-
-    var handleName = intent.getStringExtra("name")
-
-
+        progressBar = findViewById(R.id.progressBar)
 
 
 
 
-
-
+        var handleName = intent.getStringExtra("name")
 
         // Data fetching
         var userInput:String = handleName.toString()
@@ -128,6 +127,8 @@ class ChartActivity : AppCompatActivity() {
         lineChart.data = dataA
 //    lineChart.notifyDataSetChanged()
         Log.i("LineCHart","End")
+
+        progressBar.visibility = View.GONE
 
     }
 }
