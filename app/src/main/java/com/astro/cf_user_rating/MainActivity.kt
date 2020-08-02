@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,8 +27,15 @@ class MainActivity : AppCompatActivity() {
 
     fun btnClicked(view: View) {
 
-        var intent:Intent = Intent(this,ChartActivity::class.java)
-        startActivity(intent)
+        var name = editText.text.toString()
+        if(name.isEmpty()){
+            Toast.makeText(this,"Enter handle name",Toast.LENGTH_SHORT).show()
+        }else {
+
+            var intent: Intent = Intent(this, ChartActivity::class.java)
+            intent.putExtra("name", name)
+            startActivity(intent)
+        }
 
     }
 }
